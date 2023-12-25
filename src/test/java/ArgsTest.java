@@ -3,6 +3,20 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArgsTest {
+
+    // happy path
+    // TODO: bool -l
+    // TODO: int -p 8080
+    // TODO: String -d /usr
+    // TODO: multi args： "-l", "-p", "8080", "-d", "/usr"
+    // sad path
+    // TODO: bool -l xxx / -l xxx foo
+    // TODO: int -p / -p 8080 2222
+    // TODO: String -d / -d /usr /xxx
+    // default path
+    // TODO: bool: false
+    // TODO: int: 0
+    // TODO: String : ""
     @Test
     void should_example_1() {
         Options options = Args.parse(Options.class, "-l", "-p", "8080", "-d", "/usr");
