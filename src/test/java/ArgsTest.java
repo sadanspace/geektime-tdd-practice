@@ -7,6 +7,13 @@ public class ArgsTest {
 
     // happy path
     // TODO: bool -l
+    @Test
+    void should_set_boolean_option_to_true_if_flag_present(){
+        BooleanOption option = Args.parse(BooleanOption.class, "-l");
+        assertTrue(option.logging());
+    }
+
+    static record BooleanOption(@Option("-l") boolean logging){}
     // TODO: int -p 8080
     // TODO: String -d /usr
     // TODO: multi args： "-l", "-p", "8080", "-d", "/usr"
