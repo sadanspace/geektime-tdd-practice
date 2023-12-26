@@ -7,20 +7,38 @@ public class ArgsTest {
 
     // happy path
     @Test
-    void should_set_boolean_option_to_true_if_flag_present(){
+    void should_set_boolean_option_to_true_if_flag_present() {
         BooleanOption option = Args.parse(BooleanOption.class, "-l");
         assertTrue(option.logging());
     }
 
     @Test
-    void should_set_boolean_option_to_false_if_flag_not_present(){
+    void should_set_boolean_option_to_false_if_flag_not_present() {
         BooleanOption option = Args.parse(BooleanOption.class);
         assertFalse(option.logging());
     }
 
-    static record BooleanOption(@Option("l") boolean logging){}
-    // TODO: int -p 8080
-    // TODO: String -d /usr
+    record BooleanOption(@Option("l") boolean logging) {
+    }
+
+    @Test
+    void should_parse_int_as_option_value() {
+        IntegerOption option = Args.parse(IntegerOption.class, "-p", "8080");
+        assertEquals(8080, option.port());
+    }
+
+    record IntegerOption(@Option("p") int port) {
+    }
+
+    @Test
+    void should_get_string_as_option_value() {
+        StringOption option = Args.parse(StringOption.class, "-d", "/usr");
+        assertEquals("/usr", option.directory());
+    }
+
+    record StringOption(@Option("d") String directory) {
+    }
+
     // TODO: multi args： "-l", "-p", "8080", "-d", "/usr"
     // sad path
     // TODO: bool -l xxx / -l xxx foo
