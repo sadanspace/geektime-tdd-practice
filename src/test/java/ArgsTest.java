@@ -40,6 +40,17 @@ public class ArgsTest {
     }
 
     // TODO: multi args： "-l", "-p", "8080", "-d", "/usr"
+    @Test
+    void should_parse_multi_options() {
+        MultiOptions multiOptions = Args.parse(MultiOptions.class, "-l", "-p", "8080", "-d", "/usr");
+
+        assertTrue(multiOptions.logging());
+        assertEquals(8080, multiOptions.port());
+        assertEquals("/usr", multiOptions.dir());
+    }
+
+    record MultiOptions(@Option("l") boolean logging, @Option("p") int port, @Option("d") String dir) {
+    }
     // sad path
     // TODO: bool -l xxx / -l xxx foo
     // TODO: int -p / -p 8080 2222
@@ -48,18 +59,6 @@ public class ArgsTest {
     // TODO: bool: false
     // TODO: int: 0
     // TODO: String : ""
-    @Disabled
-    @Test
-    void should_example_1() {
-        Options options = Args.parse(Options.class, "-l", "-p", "8080", "-d", "/usr");
-
-        assertTrue(options.logging());
-        assertEquals(8080, options.port());
-        assertEquals("/usr", options.dir());
-    }
-
-    record Options(@Option("l") boolean logging, @Option("p") int port, @Option("d") String dir) {
-    }
 
     @Disabled
     @Test
