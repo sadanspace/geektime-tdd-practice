@@ -27,5 +27,8 @@
 提供的Anki卡片牌组：
 - [徐昊 · TDD 项目实战 70 讲 牌组](src/main/resources/flash_cards/徐昊_TDD项目实战70讲.apkg)
 
-![img.png](img.png)
-![img_1.png](img_1.png)
+<p>
+  <img src="img.png" width="300">
+  <img src="img_1.png" width="300">
+  <br/>
+</p>
