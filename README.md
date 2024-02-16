@@ -23,7 +23,11 @@
   - JDK 17+
   - [Anki](https://apps.ankiweb.net/)
 
-#### Anki卡片
+### 卡片制作进展
+
+- args项目 60%
+
+### Anki卡片
 提供的Anki卡片牌组：
 - [徐昊 · TDD 项目实战 70 讲 牌组](src/main/resources/flash_cards/徐昊_TDD项目实战70讲.apkg)
 
